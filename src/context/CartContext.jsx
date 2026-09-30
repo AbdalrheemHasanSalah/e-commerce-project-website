@@ -52,7 +52,7 @@ removeFromCart(productId);
 return;
   }
 setCartItems(cartItems.map((item) => 
-item.id ===prodectId ?{...item,quantity}:item))
+item.id ===productId ?{...item,quantity}:item))
 }
 
 
