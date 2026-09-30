@@ -1,13 +1,17 @@
+import { useAuth } from "../context/AuthContext";
 import {useCart} from"../context/CartContext"
-
 
 export default function Checkout(){
     const{getCartItemsWithProducts ,updateQuantity,removeFromCart,getCartTotal}=useCart();
     const cartItems = getCartItemsWithProducts();
     const total= getCartTotal();
+    const { user } = useAuth();
     function placeOrder(){
-        alert("successful order!");
-        clearCart();
+        if(!user){        
+            alert("Please login first!");
+}
+        else{alert("successful order!");
+        clearCart();}
     }
 return (
     <div className="page">
@@ -26,9 +30,9 @@ return (
                         </div>
                         <div className="checkout-item-controls">
                              <div className="quantity-controls">
-                                <button className="quantity-btn" onClick={()=> updateQuantity(item.id,item.quantity-1)}>-</button>
+                                <button className="quantity-btn"   onClick={() => updateQuantity(item.id, item.quantity - 1)}>-</button>
                                 <span className="quantity-value">{item.quantity}</span>
-                                <button className="quantity-btn" onClick={()=> updateQuantity(item.id,item.quantity-1)}>+</button>
+                                <button className="quantity-btn" onClick={()=> updateQuantity(item.id,item.quantity+1)}>+</button>
 
                                 </div>
                                 <p className="checkout-item-total">${(item.product.price *item.quantity).toFixed(2)}</p>

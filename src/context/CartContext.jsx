@@ -57,7 +57,7 @@ item.id ===productId ?{...item,quantity}:item))
 
 
   return (
-    <CartContext.Provider value={{ cartItems ,addToCart ,getCartItemsWithProducts,removeFromCart,getCartTotal,clearCart}}>
+    <CartContext.Provider value={{ cartItems ,addToCart ,getCartItemsWithProducts,removeFromCart,getCartTotal,clearCart,updateQuantity}}>
       {children}
     </CartContext.Provider>
   );
